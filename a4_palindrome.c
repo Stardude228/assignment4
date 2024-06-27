@@ -21,21 +21,21 @@ char toLower(char ch) {
 }
 
 // Function to check if a string is a palindrome
-int isPalindrome(char str[], int length) {
+int isPalindrome(char *str, int length) {
     int left = 0;
     int right = length - 1;
 
     while (left < right) {
         // Ignore non-alphabetical characters
-        while (left < right && !isLetter(str[left])) {
+        while (left < right && !isLetter(*(str + left))) {
             left++;
         }
-        while (right > left && !isLetter(str[right])) {
+        while (right > left && !isLetter(*(str + right))) {
             right--;
         }
 
         // Convert characters to lowercase for case-insensitive comparison
-        if (toLower(str[left]) != toLower(str[right])) {
+        if (toLower(*(str + left)) != toLower(*(str + right))) {
             return 0; // Not a palindrome
         }
 
@@ -48,17 +48,17 @@ int isPalindrome(char str[], int length) {
 
 int main() {
     char message[101]; // Maximum message length + 1 for null terminator
-    char choice;
+    char choice = 'y';
 
-    do {
+    while (choice != 'N' && choice != 'n') {
         printf("Enter a message: ");
         fgets(message, sizeof(message), stdin);
 
         // Remove newline character if present
         int len = 0;
-        while (message[len] != '\0') {
-            if (message[len] == '\n') {
-                message[len] = '\0';
+        while (*(message + len) != '\0') {
+            if (*(message + len) == '\n') {
+                *(message + len) = '\0';
                 break;
             }
             len++;
@@ -77,7 +77,7 @@ int main() {
         // Clear input buffer
         while (getchar() != '\n');
 
-    } while (choice != 'N' && choice != 'n');
+    }
 
     return 0;
 }
