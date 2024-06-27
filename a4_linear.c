@@ -21,7 +21,7 @@ int main() {
 
         // Checking if the user's input is valid
         if (scanf("%d", &n) != 1 || n < 0) {
-            printf("Invalid number \n");
+            printf("Invalid number \n \n");
             // Clearing the input buffer
             while ((ch = getchar()) != '\n');
             continue;
