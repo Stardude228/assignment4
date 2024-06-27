@@ -53,7 +53,7 @@ int main() {
 
         printf("What is the search number? ");
         if (scanf("%d", &searchNum) != 1) {
-            printf("Invalid number\n");
+            printf("Invalid number\n \n");
             // Clear the input buffer
             while (getchar() != '\n');
             free(arr);
@@ -73,9 +73,9 @@ int main() {
         }
 
         if (!found) {
-            printf("Not found: %d is not in the array.\n", searchNum);
+            printf("Not found: %d is not in the array.\n \n", searchNum);
         } else {
-            printf(" in the array.\n");
+            printf(" in the array.\n \n");
         }
 
         free(arr);
