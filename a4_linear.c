@@ -15,17 +15,16 @@ int main() {
     int *arr;
     char ch;
 
-
     while (1) {
         printf("Enter the number of input integers (0 to stop): ");
-
-        // Checking if the user's input is valid
-        if (scanf("%d", &n) != 1 || n < 0) {
-            printf("Invalid number \n");
-            // Clearing the input buffer
-            while ((ch = getchar()) != '\n');
+        
+        if (scanf("%d", &n) != 1) {
+            printf("Invalid number\n");
+            // Clear the input buffer
+            while (getchar() != '\n');
             continue;
         }
+
         if (n == 0) {
             break;
         }
@@ -71,10 +70,10 @@ int main() {
             }
         }
 
-        if (found) {
-            printf(" in the array.\n");
-        } else {
+        if (!found) {
             printf("Not found: %d is not in the array.\n", searchNum);
+        } else {
+            printf(" in the array.\n");
         }
 
         free(arr);
