@@ -27,10 +27,10 @@ int isPalindrome(char str[], int length) {
 
     while (left < right) {
         // Ignore non-alphabetical characters
-        while (!isLetter(str[left]) && left < right) {
+        while (left < right && !isLetter(str[left])) {
             left++;
         }
-        while (!isLetter(str[right]) && left < right) {
+        while (right > left && !isLetter(str[right])) {
             right--;
         }
 
@@ -81,4 +81,3 @@ int main() {
 
     return 0;
 }
-
