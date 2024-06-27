@@ -52,7 +52,9 @@ int main() {
 
     while (choice != 'N' && choice != 'n') {
         printf("Enter a message: ");
-        fgets(message, sizeof(message), stdin);
+        if (fgets(message, sizeof(message), stdin) == NULL) {
+            continue; // If fgets fails, skip to the next iteration
+        }
 
         // Remove newline character if present
         int len = 0;
@@ -75,7 +77,7 @@ int main() {
         scanf(" %c", &choice); // Notice the space before %c to consume whitespace
 
         // Clear input buffer
-        while (getchar() != '\n');
+        while (getchar() != '\n' && getchar() != EOF);
 
     }
 
