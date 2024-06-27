@@ -11,7 +11,6 @@ int main() {
 
     // Declaring variables for future use
     int n, searchNum, i;
-    int *arr;
     char ch;
 
 
