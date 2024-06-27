@@ -15,13 +15,15 @@ int main() {
     int *arr;
     char ch;
 
+
     while (1) {
         printf("Enter the number of input integers (0 to stop): ");
-        
-        if (scanf("%d", &n) != 1) {
-            printf("Invalid number\n");
-            // Clear the input buffer
-            while (getchar() != '\n');
+
+        // Checking if the user's input is valid
+        if (scanf("%d", &n) != 1 || n < 0) {
+            printf("Invalid number \n");
+            // Clearing the input buffer
+            while ((ch = getchar()) != '\n');
             continue;
         }
 
