@@ -21,12 +21,11 @@ int main() {
 
         // Checking if the user's input is valid
         if (scanf("%d", &n) != 1 || n < 0) {
-            printf("Invalid number\n");
+            printf("Invalid number \n");
             // Clearing the input buffer
             while ((ch = getchar()) != '\n');
             continue;
         }
-
         if (n == 0) {
             break;
         }
@@ -40,14 +39,25 @@ int main() {
 
         printf("Enter numbers: ");
         for (i = 0; i < n; i++) {
-            scanf("%d", arr + i);
+            if (scanf("%d", arr + i) != 1) {
+                printf("Invalid input. Please enter integers only.\n");
+                // Clear the input buffer
+                while (getchar() != '\n');
+                i--;  // Decrement i to retry the current index
+            }
         }
 
         // Clear the input buffer to ignore extra input characters
         while (getchar() != '\n');
 
         printf("What is the search number? ");
-        scanf("%d", &searchNum);
+        if (scanf("%d", &searchNum) != 1) {
+            printf("Invalid number\n");
+            // Clear the input buffer
+            while (getchar() != '\n');
+            free(arr);
+            continue;
+        }
 
         int found = 0;
         for (i = 0; i < n; i++) {
