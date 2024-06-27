@@ -58,9 +58,9 @@ int main() {
 
         // Remove newline character if present
         int len = 0;
-        while (*(message + len) != '\0') {
-            if (*(message + len) == '\n') {
-                *(message + len) = '\0';
+        while (message[len] != '\0') {
+            if (message[len] == '\n') {
+                message[len] = '\0';
                 break;
             }
             len++;
@@ -74,11 +74,14 @@ int main() {
         }
 
         printf("Do you want to continue (N to stop)? ");
-        scanf(" %c", &choice); // Notice the space before %c to consume whitespace
-
-        // Clear input buffer
-        while (getchar() != '\n' && getchar() != EOF);
-
+        while (1) {
+            int result = scanf(" %c", &choice);
+            if (result == 1 && (choice == 'N' || choice == 'n' || choice == 'Y' || choice == 'y')) {
+                break;
+            }
+            printf("Invalid input. Do you want to continue (N to stop)? ");
+            while (getchar() != '\n'); // Clear input buffer
+        }
     }
 
     return 0;
