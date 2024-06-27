@@ -31,12 +31,7 @@ int main() {
             break;
         }
 
-        arr = (int*) malloc(n * sizeof(int));
-
-        if (arr == NULL) {
-            printf("Memory allocation failed.\n");
-            return 1;
-        }
+        int arr[n];
 
         printf("Enter numbers: ");
         for (i = 0; i < n; i++) {
@@ -56,7 +51,6 @@ int main() {
             printf("Invalid number\n \n");
             // Clear the input buffer
             while (getchar() != '\n');
-            free(arr);
             continue;
         }
 
@@ -78,7 +72,6 @@ int main() {
             printf(" in the array.\n \n");
         }
 
-        free(arr);
     }
 
     return 0;
