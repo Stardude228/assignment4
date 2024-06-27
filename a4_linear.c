@@ -6,17 +6,18 @@
     /* and saves them into an array. */
 /*************************************/
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int main() {
 
+    // Declaring variables for future use
     int n, searchNum, i;
     int *arr;
     char ch;
 
 
     while (1) {
+    
+        // User prompt
         printf("Enter the number of input integers (0 to stop): ");
 
         // Checking if the user's input is valid
@@ -27,12 +28,15 @@ int main() {
             continue;
         }
 
+        // Checking if the user wants to end the program
         if (n == 0) {
             break;
         }
 
+        // Variable Length Array for dynamic allocation
         int arr[n];
 
+        // Prompt for user to enter numbers
         printf("Enter numbers: ");
         for (i = 0; i < n; i++) {
             if (scanf("%d", arr + i) != 1) {
@@ -46,6 +50,7 @@ int main() {
         // Clear the input buffer to ignore extra input characters
         while (getchar() != '\n');
 
+        // Prompt for user to enter the search number
         printf("What is the search number? ");
         if (scanf("%d", &searchNum) != 1) {
             printf("Invalid number\n \n");
@@ -54,7 +59,10 @@ int main() {
             continue;
         }
 
+        // Variable for the case if the number is found
         int found = 0;
+
+        // A loop for number searching
         for (i = 0; i < n; i++) {
             if (*(arr + i) == searchNum) {
                 if (found == 0) {
@@ -66,12 +74,12 @@ int main() {
             }
         }
 
+        // Printing the right numbers
         if (!found) {
             printf("Not found: %d is not in the array.\n \n", searchNum);
         } else {
             printf(" in the array.\n \n");
         }
-
     }
 
     return 0;
